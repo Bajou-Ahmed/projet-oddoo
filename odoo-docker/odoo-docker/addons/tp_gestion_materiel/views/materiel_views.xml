@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_tp_materiel" model="ir.actions.act_window">
+        <field name="name">Matériels</field>
+        <field name="res_model">tp.materiel</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_materiel_root" name="Gestion Matériel" sequence="10"/>
+
+    <menuitem id="menu_materiel_list" 
+              name="Liste du Matériel" 
+              parent="menu_materiel_root" 
+              action="action_tp_materiel" 
+              sequence="10"/>
+
+    <record id="view_tp_materiel_tree" model="ir.ui.view">
+        <field name="name">tp.materiel.tree</field>
+        <field name="model">tp.materiel</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="type_materiel"/>
+                <field name="reference"/>
+                <field name="date_achat"/>
+                <field name="etat"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_tp_materiel_form" model="ir.ui.view">
+        <field name="name">tp.materiel.form</field>
+        <field name="model">tp.materiel</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Ex: PC Dell Latitude..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="type_materiel"/>
+                            <field name="reference"/>
+                            <field name="etat"/>
+                        </group>
+                        <group>
+                            <field name="date_achat"/>
+                            <field name="cout"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description" placeholder="Notes supplémentaires..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
